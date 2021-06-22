@@ -1,0 +1,12 @@
+@import "./fonts";
+@import "./vars";
+
+@import "./menu";
+
+body{
+    background-color: $grey;
+}
+a{
+    color: $grey;
+    text-decoration: underline;
+}
