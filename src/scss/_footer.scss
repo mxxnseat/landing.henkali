@@ -1,0 +1,54 @@
+footer{
+    background: $darkBlue;
+    background-image: url("../assets/img/small_pattern.svg");
+    background-repeat: repeat-x;
+    background-position: 0 -2px;
+
+    .social{
+        padding: 60px 0;
+        &__heading{
+            color: $white;
+            font-size: 18px;
+            line-height: 100%;
+            text-align: center;
+            margin-bottom: 15px;
+        }
+        &__link{
+            color: $white;
+            opacity: .6;
+            font-size: 14px;
+            line-height: 140%;
+            display: flex;
+            align-items: center;
+
+            &:before{
+                content: '';
+                background-repeat: no-repeat;
+                min-width: 30px;
+                height: 30px;
+                background-position: center;
+                margin-right: 12px;
+            }
+
+            &.inst{
+                justify-content: flex-end;
+                &:before{
+                    background-image: url('../assets/icons/stroke_inst-white.svg');
+                }
+            }
+            &.vk{
+                justify-content: flex-start;
+                &:before{
+                    background-image: url('../assets/icons/fill-vk.svg');
+                }
+            }
+        }
+    }
+    .copyright{
+        border-top: 1px solid rgba(255,255,255, .25);
+        color: $white;
+        font-size: 14px;
+        line-height: 140%;
+        padding: 30px 0;
+    }
+}
