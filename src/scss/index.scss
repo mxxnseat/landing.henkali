@@ -7,17 +7,29 @@
 body, html{
     overflow-x: hidden;
 }
+body{
+    background: url('../assets/img/bg.png'), rgba(255,255,255,0.8);
+    background-blend-mode: color;
+    background-repeat: repeat;
+}
 a{
     text-decoration: none !important;
     color: $grey3;
+}
+section{
+    .container{
+        background: $white;
+    }
 }
 .heading{
     font-family: $heading;
     color: $darkBlue;
     line-height: 100%;
+    text-align: center;
 
     &h1{
         font-size: 72px;
+        text-align: initial;
     }
     &h2{
         font-size: 48px;
