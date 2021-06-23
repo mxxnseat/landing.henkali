@@ -1,11 +1,11 @@
-import Test from "./components/Test";
+import {Footer} from "./components/Footer";
 import "./scss/index.scss";
 
 function App() {
   return (
-    <div className="App">
-        <Test />
-    </div>
+    <>
+      <Footer />
+    </>
   );
 }
 

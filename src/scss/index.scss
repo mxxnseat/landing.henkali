@@ -1,12 +1,40 @@
 @import "./fonts";
 @import "./vars";
+@import "./footer";
 
 @import "./menu";
 
-body{
-    background-color: $grey;
+body, html{
+    overflow-x: hidden;
 }
 a{
-    color: $grey;
-    text-decoration: underline;
+    text-decoration: none !important;
+    color: $grey3;
+}
+.heading{
+    font-family: $heading;
+    color: $darkBlue;
+    line-height: 100%;
+
+    &h1{
+        font-size: 72px;
+    }
+    &h2{
+        font-size: 48px;
+    }
+    &h3{
+        font-size: 42px;
+    }
+}
+.text-red{
+    color: $red;
+}
+.text{
+    font-family: $text;
+}
+.subtitle{
+    font-family: $subtitle;
+}
+.subheading{
+    font-family: $subheading;
 }
