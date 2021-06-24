@@ -1,0 +1,270 @@
+@import "../../scss/vars";
+$time: 500ms;
+$delay: $time/2;
+$mode: cubic-bezier(0.17, 0.67, 0.55, 1.43);
+@keyframes heartbeat {
+  0% {
+    transform: scale(0);
+  }
+  25% {
+    transform: scale(1.2);
+  }
+  50% {
+    transform: scale(1);
+  }
+  75% {
+    transform: scale(1.2);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+.carousel-wrap{
+    margin-bottom: 60px;
+}
+.react-3d-carousel {
+  position: relative;
+  min-height: 300px;
+
+
+    .slider-paginator{
+        max-width: 200px;
+        margin: 0 auto;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-top: 15px;
+        margin-bottom: 60px;
+    }
+    .slider-left,
+    .slider-right{
+        width: 65px;
+        height: 65px;
+        border-radius: 50%;
+        cursor: pointer;
+        border: 2px solid $darkRed;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        z-index: 99999;
+        background-image: url("../../assets/icons/arrow.svg");
+        background-size: 12px 24px;
+        background-position: 22px 19px;
+        background-repeat: no-repeat;
+    }
+    .slider-right{
+      transform: rotate(180deg);
+    }
+  .slider-container {
+    width: 100%;
+    min-height: 280px;
+
+    .slider-content {
+      position: relative;
+      left: 50%;
+      top: 0%;
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      height: 80%;
+      min-height: 280px;
+      transform: translateX(-50%);
+      .slider-single {
+        position: absolute;
+        z-index: 0;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        transition: z-index 0ms $delay;
+        .slider-single-content {
+          display: flex;
+          -webkit-box-pack: center;
+          -ms-flex-pack: center;
+          justify-content: center;
+          position: relative;
+          left: 0;
+          top: 0;
+          width: 100%;
+            height: 100%;
+          transition: transform $time $mode;
+          transform: scale(0);
+          img {
+            min-height: 220px;
+            object-fit: cover;
+            height: 100%;
+            width: 100%;
+            max-width: 400px;
+            border-radius: 15px;
+          }
+        }
+        &.preactivede {
+          .slider-single-content {
+            transform: translateX(-50%) scale(0);
+          }
+        }
+        &.preactive {
+          z-index: 1;
+          .slider-single-content {
+            transform: translateX(-30%) scale(0.8);
+          }
+        }
+        &.proactive {
+          z-index: 1;
+          .slider-single-content {
+            transform: translateX(30%) scale(0.8);
+          }
+        }
+        &.proactivede {
+          //z-index: 0;
+          .slider-single-content {
+            //opacity: 0;
+            transform: translateX(50%) scale(0);
+          }
+        }
+        &.active {
+            max-width: 500px;
+            left: initial;
+          z-index: 2;
+          .slider-single-content {
+            opacity: 1;
+            transform: translateX(0%) scale(1);
+            width: 500px;
+            img{
+                width: 100%;
+                max-width: 100%;
+            }
+          }
+        }
+      }
+    }
+    .slider-left {
+      position: absolute;
+      display: none;
+      z-index: 3;
+      right: 101%;
+      margin-right: 5px;
+      padding: 20px 15px;
+      height: 100%;
+      cursor: pointer;
+      div {
+        position: absolute;
+        top: 50%;
+        left: 0%;
+        margin-top: -20px;
+        color: #ffffff;
+        transform: translateY(-50%);
+        padding: 10px 10px;
+        border-top: 2px solid #fdc84b;
+        border-right: 2px solid #fdc84b;
+        border-bottom: 2px solid #fdc84b;
+        border-left: 2px solid #fdc84b;
+      }
+    }
+    .slider-right {
+      display: none;
+      position: absolute;
+      z-index: 3;
+      left: 101%;
+      padding: 20px 15px;
+      height: 101%;
+      cursor: pointer;
+      div {
+        position: absolute;
+        top: 50%;
+        left: 0%;
+        margin-top: -20px;
+        color: #ffffff;
+        transform: translateY(-50%);
+        padding: 10px 10px;
+        border-top: 2px solid #fdc84b;
+        border-right: 2px solid #fdc84b;
+        border-bottom: 2px solid #fdc84b;
+        border-left: 2px solid #fdc84b;
+      }
+      margin-left: -2px;
+    }
+    .slider-left-noborders {
+      position: absolute;
+      display: none;
+      z-index: 3;
+      right: 101%;
+      margin-right: 5px;
+      padding: 20px 15px;
+      height: 100%;
+      cursor: pointer;
+      div {
+        position: absolute;
+        top: 50%;
+        left: 0%;
+        margin-top: -20px;
+        color: #ffffff;
+        transform: translateY(-50%);
+        padding: 10px 10px;
+      }
+    }
+    .slider-right-noborders {
+      display: none;
+      position: absolute;
+      z-index: 3;
+      left: 101%;
+      padding: 20px 15px;
+      height: 101%;
+      cursor: pointer;
+      div {
+        position: absolute;
+        top: 50%;
+        left: 0%;
+        margin-top: -20px;
+        color: #ffffff;
+        transform: translateY(-50%);
+        padding: 10px 10px;
+      }
+      margin-left: -2px;
+    }
+    .slider-disabled {
+      div {
+        display: none;
+      }
+    }
+  }
+}
+
+
+@media screen and (min-width: 320px) and (max-width: 540px){
+    .carousel-wrap{
+        .react-3d-carousel{
+            min-height: 100%;
+            max-height: 160px;
+
+            .slider-container{
+                min-height: initial;
+                height: 100%;
+                max-height: 107px;
+
+                .slider-content{
+                    min-height: 107px;
+
+                    .slider-single{
+                        &.active{
+                            display: flex;
+                            justify-content: center;
+
+                            .slider-single-content{
+                                width: 190px;
+
+                            }
+                        }
+                        &-content{
+
+                            img{
+                                min-height: 107px;
+                                max-width: 150px;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
