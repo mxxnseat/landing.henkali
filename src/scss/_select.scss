@@ -1,0 +1,137 @@
+.choice{
+    &__select{
+        max-width: 350px;
+        position: relative;
+
+        &__options{
+            position: absolute;
+            box-shadow: 0px 60px 100px rgba(0, 0, 0, 0.15), 0px 38.8889px 58.5648px rgba(0, 0, 0, 0.113889), 0px 23.1111px 31.8519px rgba(0, 0, 0, 0.0911111), 0px 12px 16.25px rgba(0, 0, 0, 0.075), 0px 4.88889px 8.14815px rgba(0, 0, 0, 0.0588889), 0px 1.11111px 3.93519px rgba(0, 0, 0, 0.0361111);
+            border-radius: 0px 0px 15px 15px;
+            background-color: $white;
+            width: 100%;
+            margin-top: 4.5px;
+            z-index: 99999999;
+            max-height: 456px;
+            overflow-y: scroll;
+        }
+        &__option{
+            padding: 26px 16px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            font-size: 16px;
+            color: $grey3;
+            transition: .25s ease-in;
+            &:hover{
+                background-color: $red;
+                color: $white;
+
+                &:before{
+                    background-image: url('../assets/icons/mark_white.svg');
+                }
+            }
+            &:before{
+                content: '';
+                background-image: url('../assets/icons/mark.svg');
+                min-width: 14px;
+                min-height: 20px;
+                background-repeat: no-repeat;
+                background-size: contain;
+                margin-right: 16px;
+            }
+        }
+        &__signature{
+            font-size: 12px;
+            line-height: 160%;
+            color: $greyAB;
+            padding-left: 12px;
+            margin-bottom: 8px;
+            text-transform: uppercase;
+        }
+        &__list{
+            background: $greyEF;
+            border-radius: 15px;
+            padding: 19px;
+            color: $grey6;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            
+            img{
+                margin-right: 15px;
+            }
+
+            &.active{
+                &:after{
+                    transform: rotate(180deg);
+                }
+            }
+            &:after{
+                content: '';
+                transition: .2s ease;
+                width: 12px;
+                height: 6px;
+                background-image: url('../assets/icons/angle_grey.svg');
+                background-size: contain;
+                background-repeat: no-repeat;
+                margin-left: auto;
+            }
+        }
+    }
+
+    &__menu{
+        max-width: 65px;
+        min-height: 60px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        background-color: $greyC;
+        border-radius: 15px;
+        color: $greyAB;
+        font-size: 8px;
+        cursor: pointer;
+    }
+    &__btn{
+        max-width: 255px;
+        background-color: $greyC;
+        border-radius: 15px;
+        height: 60px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        cursor: pointer;
+        color: $greyAB;
+    }
+
+    ::-webkit-scrollbar-button {
+        background-repeat:no-repeat;
+        width:5px;
+        height:0px
+    }
+        
+    ::-webkit-scrollbar-track {
+        background-color:$greyC;
+        border-radius: 7px;
+    }
+        
+    ::-webkit-scrollbar-thumb {
+        border-radius: 7px;
+        background-color:$darkBlue;
+    }
+        
+    ::-webkit-scrollbar-thumb:hover{
+        background-color:#56999f;
+    }
+        
+    ::-webkit-resizer{
+        background-repeat:no-repeat;
+        width:4px;
+        height:0px
+    }
+        
+    ::-webkit-scrollbar{
+        width: 8px;
+    }
+}
