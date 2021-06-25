@@ -1,14 +1,43 @@
+import classNames from 'classnames';
+import {useEffect, useRef, useState} from "react";
+
 export function Select({icon, signature, selectText}){
+    const [isOpen, setIsOpen] = useState(false);
+    const selectParentClasses = classNames({
+        'col-4 px-0 choice__select': true,
+        'active': isOpen
+    });
+    const selectEl = useRef(null);
+    useEffect(()=>{
+        const handler = function(e){
+            if(isOpen) return null;
+
+            const isConditionClose = e.path.find(pathEl=>{
+                return pathEl == selectEl.current;
+            });
+            !isConditionClose && setIsOpen(false);
+        }
+        document.addEventListener("click", handler);
+
+        return ()=>{
+            document.removeEventListener("click", handler);
+        }
+    }, []);
+
+    const toggleList = ()=>{
+        setIsOpen(!isOpen);
+        console.log(isOpen);
+    }
 
     return (
-        <div className="col-4 px-0 choice__select">
+        <div className={selectParentClasses} ref={selectEl}>
             <div className="choice__select__signature subtitle">{signature}</div>
-            <div className="choice__select__list subheading">
+            <div className="choice__select__list subheading" onClick={toggleList}>
                 {icon ? <img src={icon} alt={icon.desc} /> : ''}
                 {selectText}
             </div>
-            <div className="choice__select__options">
-                <div className="choice__select__option subtitle">1</div>
+            <div className="choice__select__options ">
+                <div className="choice__select__option subtitle" onClick={()=>setIsOpen(false)}>1</div>
                 <div className="choice__select__option subtitle">1</div>
                 <div className="choice__select__option subtitle">1</div>
                 <div className="choice__select__option subtitle">1</div>

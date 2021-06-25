@@ -10,7 +10,10 @@ export function Choice(){
 		iconImageOffset: [-72, -86]
     };
     const [cord, setCord] = useState([55.684758, 37.738521]); // tmp cordinates
-    
+
+    const [city, setCity] = useState([]);
+    const [adress, setAdress] = useState([]);
+
     return (
         <section className="choice">
             <div className="container">
