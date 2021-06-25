@@ -3,17 +3,11 @@
 @import "./footer";
 
 @import "./menu";
-@import "./_One_more_test";
 
 body, html{
     overflow-x: hidden;
 }
 a{
-<<<<<<< HEAD
-    color: $grey;
-    text-decoration: underline;
-}
-=======
     text-decoration: none !important;
     color: $grey3;
 }
@@ -44,4 +38,3 @@ a{
 .subheading{
     font-family: $subheading;
 }
->>>>>>> 53c55615a48087f07232cb5d3ffd0f2abf236945
