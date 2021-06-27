@@ -1,7 +1,12 @@
 import classNames from 'classnames';
 import {useEffect, useRef, useState} from "react";
 
-export function Select({icon, signature, selectText}){
+export function Select({icon,
+    signature,
+    selectText,
+    adressesList,
+    setAdress
+}){
     const [isOpen, setIsOpen] = useState(false);
     const selectParentClasses = classNames({
         'col-4 px-0 choice__select': true,
@@ -13,7 +18,7 @@ export function Select({icon, signature, selectText}){
             if(isOpen) return null;
 
             const isConditionClose = e.path.find(pathEl=>{
-                return pathEl == selectEl.current;
+                return pathEl === selectEl.current;
             });
             !isConditionClose && setIsOpen(false);
         }
@@ -22,11 +27,17 @@ export function Select({icon, signature, selectText}){
         return ()=>{
             document.removeEventListener("click", handler);
         }
-    }, []);
+    });
 
     const toggleList = ()=>{
         setIsOpen(!isOpen);
         console.log(isOpen);
+    }
+
+    const optionClickHandler = (data)=>{
+        setIsOpen(false);
+        console.log(data);
+        setAdress(data);
     }
 
     return (
@@ -37,14 +48,19 @@ export function Select({icon, signature, selectText}){
                 {selectText}
             </div>
             <div className="choice__select__options ">
-                <div className="choice__select__option subtitle" onClick={()=>setIsOpen(false)}>1</div>
-                <div className="choice__select__option subtitle">1</div>
-                <div className="choice__select__option subtitle">1</div>
-                <div className="choice__select__option subtitle">1</div>
-                <div className="choice__select__option subtitle">1</div>
-                <div className="choice__select__option subtitle">1</div>
-                <div className="choice__select__option subtitle">1</div>
-                <div className="choice__select__option subtitle">1</div>
+                {
+                    adressesList ? adressesList.map((adress,index)=>{
+                        return (
+                            <div key={index} className="choice__select__option subtitle"
+                                onClick={()=>{
+                                    optionClickHandler(adress)
+                                }}
+                            >
+                                {adress.city ? adress.city : adress.street}
+                            </div>
+                        )
+                    }) : ''
+                }
             </div>
         </div>
     );
