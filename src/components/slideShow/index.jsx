@@ -4,6 +4,8 @@ import img_3 from "../../assets/img/gallery/4.jpg";
 import img_4 from "../../assets/img/gallery/5.jpg";
 import img_5 from "../../assets/img/gallery/1.jpg";
 
+import "./style.scss";
+
 import {useEffect, useRef} from "react";
 
 import {mouseDownHandler, mouseMoveHandler, mouseUpHandler} from "./listenerHandlers";
@@ -13,16 +15,24 @@ export function SlideShow() {
     
 
     useEffect(()=>{
-        gallery.current.style.width = gallery.current.childElementCount*380+'px';
-        const mouseMoveHandlerReact = (gallery=>e=>mouseMoveHandler(e, gallery))(gallery.current);
-        gallery.current.style.transform = `translateX(0px)`;
-        gallery.current.addEventListener("touchend", mouseUpHandler);
-        gallery.current.addEventListener("touchstart", mouseDownHandler);
-        gallery.current.addEventListener("touchmove", mouseMoveHandlerReact);
+        let refValue = null;
+
+        if(gallery.current){
+            refValue = gallery.current;
+        }else{
+            return;
+        }
+
+        refValue.style.width = gallery.current.childElementCount*380+'px';
+        const mouseMoveHandlerReact = (gallery=>e=>mouseMoveHandler(e, gallery))(refValue);
+        refValue.style.transform = `translateX(0px)`;
+        refValue.addEventListener("touchend", mouseUpHandler);
+        refValue.addEventListener("touchstart", mouseDownHandler);
+        refValue.addEventListener("touchmove", mouseMoveHandlerReact);
         return ()=>{
-            gallery.current.removeEventListener("touchmove", mouseMoveHandlerReact)
-            gallery.current.removeEventListener("touchend", mouseUpHandler)
-            gallery.current.removeEventListener("touchstart", mouseDownHandler)
+            refValue.removeEventListener("touchmove", mouseMoveHandlerReact)
+            refValue.removeEventListener("touchend", mouseUpHandler)
+            refValue.removeEventListener("touchstart", mouseDownHandler)
         }
     }, [gallery]);
 
