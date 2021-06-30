@@ -7,7 +7,7 @@ export function Raffles() {
                 <h2 className="heading">
                     Розыгрыши и <span className="text-red">акции</span>
                 </h2>
-                <div className="raffles__list d-flex justify-content-between">
+                <div className="raffles__list d-flex flex-wrap justify-content-md-between justify-content-center">
                     <RaffleItem />
                     <RaffleItem />
                     <RaffleItem />

@@ -7,7 +7,7 @@ export function News() {
                 <h2 className="text-red heading">
                     Новости
                 </h2>
-                <div className="new__list">
+                <div className="new__list d-flex flex-wrap justify-content-center">
                     <NewsItem />
                     <NewsItem />
                     <NewsItem />
