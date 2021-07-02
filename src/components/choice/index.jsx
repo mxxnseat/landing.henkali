@@ -81,7 +81,7 @@ export function Choice() {
                             selectHanlder({ name: 'adress', value })
                         }}
                     />
-                    <a href="//vk.com" target="_blank" className={menuCN}>
+                    <a href="//vk.com" rel="noreferrer" target="_blank" className={menuCN}>
                         меню
                     </a>
                     <div className={bookingCN}>

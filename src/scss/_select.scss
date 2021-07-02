@@ -110,10 +110,16 @@
         background-size: 24px;
         background-position: center 11px;
         background-repeat: no-repeat;
+        &:hover{
+            color: $greyAB;
+        }
         &.active{
             background-color: $red;
             background-image: url("../assets/icons/menu_white.svg");
             color: $white;
+            &:hover{
+                color: $white;
+            }
         }
     }
     &__btn{
