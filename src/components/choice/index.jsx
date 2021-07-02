@@ -1,13 +1,14 @@
-import {Select} from "./Select";
-import { YMaps, Map,Placemark } from 'react-yandex-maps';
+import { Select } from "./Select";
+import { YMaps, Map, Placemark } from 'react-yandex-maps';
 import { useEffect, useState } from "react";
+import classNames from 'classnames';
 
-export function Choice(){
+export function Choice() {
     const placemarkOptions = {
         iconLayout: 'default#image',
-		iconImageHref: require("../../assets/icons/map_mark.svg").default,
-		iconImageSize: [72, 86],
-		iconImageOffset: [-72, -86]
+        iconImageHref: require("../../assets/icons/map_mark.svg").default,
+        iconImageSize: [72, 86],
+        iconImageOffset: [-72, -86]
     };
 
 
@@ -17,23 +18,37 @@ export function Choice(){
         city: null,
         adress: null
     });
-    
-    useEffect(()=>{
+
+    useEffect(() => {
         fetch("/adresses.json")
-            .then(res=>res.json())
-            .then((data)=>{
+            .then(res => res.json())
+            .then((data) => {
                 setAdressesList(data);
             });
     }, []);
 
-    const selectHanlder = ({name, value})=>{
-        console.log(name, value);
-        setBookAdress({
-            ...bookAdress,
-            [name]: value
+    const selectHanlder = ({ name, value }) => {
+        setBookAdress(previous=>{
+            if(name === "city" && previous.city !== value){
+                return {
+                    [name]: value,
+                    adress: null
+                }
+            }
+            return {
+                ...bookAdress,
+                [name]: value
+            }
         });
-        console.log(bookAdress);
     }
+    const bookingCN = classNames({
+        "col-md-3 col-8 choice__btn subtitle align-self-end": true,
+        "active": bookAdress.city && bookAdress.adress
+    })
+    const menuCN = classNames({
+        "choice__menu col-md-1 col-3 subtitle align-self-end": true,
+        "active": bookAdress.city && bookAdress.adress
+    })
 
     return (
         <section className="choice">
@@ -41,39 +56,38 @@ export function Choice(){
                 <h2 className="heading">
                     Выберите <span className="text-red">хинкальную</span>
                 </h2>
-                <div className="row mt-4 justify-content-around">
+                <div className="d-flex flex-wrap mt-4 justify-content-md-around justify-content-between">
                     <Select
                         adressesList={adressesList}
                         icon={require("../../assets/icons/mark.svg").default}
                         signature="Город"
+                        selected={bookAdress.city !== null && bookAdress.city}
                         selectText={bookAdress.city !== null ? bookAdress.city : 'Выберите город'}
-                        setAdress={(value)=>{
+                        setAdress={(value) => {
                             setSelectedAdress(value)
-                            selectHanlder({name:'city', value: value.city})
+                            selectHanlder({ name: 'city', value: value.city })
                         }}
                     />
 
 
-                    <Select 
+                    <Select
                         signature="Адрес"
                         selectText={
-                            (  
-                                bookAdress.adress !==null
-                            )
-                             ? bookAdress.adress.street : 'Выберите город'
-                            }
+                            bookAdress.adress !== null ? bookAdress.adress.street : 'Выберите город'
+                        }
+                        selected={bookAdress.adress !== null && true}
                         adressesList={selectedAdress?.adresses}
-                        setAdress={(value)=>{
-                            selectHanlder({name:'adress', value})
+                        setAdress={(value) => {
+                            selectHanlder({ name: 'adress', value })
                         }}
                     />
-                    <div className="choice__menu col-1 subtitle align-self-end">
-                        <img src={require("../../assets/icons/menu.svg").default} alt="Нож и вилка" />
+                    <a href="//vk.com" target="_blank" className={menuCN}>
                         меню
-                    </div>
-                    <div className="col-3 choice__btn subtitle align-self-end">
+                    </a>
+                    <div className={bookingCN}>
                         ЗАБРОНИРОВАТЬ СТОЛИК
                     </div>
+
                 </div>
             </div>
             <YMaps>

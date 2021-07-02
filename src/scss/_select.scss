@@ -54,6 +54,12 @@
             margin-bottom: 8px;
             text-transform: uppercase;
         }
+        &.selected{
+            .choice__select__list{
+                border: 1px solid $red;
+                color: $red;
+            }
+        }
         &__list{
             background: $greyEF;
             border-radius: 15px;
@@ -91,13 +97,24 @@
         min-height: 60px;
         display: flex;
         flex-direction: column;
-        justify-content: center;
+        justify-content: flex-end;
         align-items: center;
         background-color: $greyC;
         border-radius: 15px;
+        padding-bottom: 11px;
         color: $greyAB;
         font-size: 8px;
         cursor: pointer;
+
+        background-image: url("../assets/icons/menu.svg");
+        background-size: 24px;
+        background-position: center 11px;
+        background-repeat: no-repeat;
+        &.active{
+            background-color: $red;
+            background-image: url("../assets/icons/menu_white.svg");
+            color: $white;
+        }
     }
     &__btn{
         max-width: 255px;
@@ -109,6 +126,10 @@
         align-items: center;
         cursor: pointer;
         color: $greyAB;
+        &.active{
+            background-color: $red;
+            color: $white;
+        }
     }
 
     ::-webkit-scrollbar-button {
@@ -139,5 +160,20 @@
         
     ::-webkit-scrollbar{
         width: 8px;
+    }
+}
+
+
+
+@media screen and (min-width: 375px) and (max-width: 768px){
+    .choice{
+        &__select,
+        &__btn,
+        &__menu{
+            max-width: initial;
+        }
+        &__select:nth-child(2){
+            margin: 16px 0;
+        }
     }
 }

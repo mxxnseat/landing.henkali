@@ -5,12 +5,14 @@ export function Select({icon,
     signature,
     selectText,
     adressesList,
-    setAdress
+    setAdress,
+    selected
 }){
     const [isOpen, setIsOpen] = useState(false);
     const selectParentClasses = classNames({
-        'col-4 px-0 choice__select': true,
-        'active': isOpen
+        'col-md-4 col-12 px-0 choice__select': true,
+        'active': isOpen,
+        'selected': selected
     });
     const selectEl = useRef(null);
     useEffect(()=>{
@@ -31,12 +33,10 @@ export function Select({icon,
 
     const toggleList = ()=>{
         setIsOpen(!isOpen);
-        console.log(isOpen);
     }
 
     const optionClickHandler = (data)=>{
         setIsOpen(false);
-        console.log(data);
         setAdress(data);
     }
 
