@@ -1,0 +1,17 @@
+.info{
+    color: $greyAB;
+    font-size: 14px;
+    line-height: 19px;
+
+    &__views{
+        display: flex;
+        align-items: center;
+        &:before{
+            content: '';
+            background-image: url("../assets/icons/views.svg");
+            width: 20px;
+            height: 14px;
+            margin-right: 8px;
+        }
+    }
+}

@@ -1,30 +1,46 @@
 @import "./fonts";
 @import "./vars";
-@import "./footer";
 
+@import "./info";
+@import "./footer";
+@import "./news";
+@import "./raffles";
 @import "./menu";
+@import "./header";
 
 body, html{
     overflow-x: hidden;
+}
+body{
+    background: url('../assets/img/bg.png'), rgba(255,255,255,0.8);
+    background-blend-mode: color;
+    background-repeat: repeat;
 }
 a{
     text-decoration: none !important;
     color: $grey3;
 }
+section{
+    .container{
+        padding-bottom: 96px;
+        background: $white;
+    }
+}
+h1{
+    font-size: 72px;
+    text-align: initial;
+}
+h2{
+    font-size: 48px;
+}
+h3{
+    font-size: 42px;
+}
 .heading{
     font-family: $heading;
     color: $darkBlue;
     line-height: 100%;
-
-    &h1{
-        font-size: 72px;
-    }
-    &h2{
-        font-size: 48px;
-    }
-    &h3{
-        font-size: 42px;
-    }
+    text-align: center;
 }
 .text-red{
     color: $red;
@@ -38,3 +54,4 @@ a{
 .subheading{
     font-family: $subheading;
 }
+
