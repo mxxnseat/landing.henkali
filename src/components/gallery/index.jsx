@@ -11,7 +11,7 @@ export function Gallery(){
 
     return (
         <section className="gallery">
-            <div className="container">
+            <div className="container pt-5">
                 <h2 className="heading">Фотогалерея</h2>
                 <Carousel slides={slides} />
             </div>

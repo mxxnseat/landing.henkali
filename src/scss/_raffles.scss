@@ -34,3 +34,18 @@
         max-height: 154px;
     }
 }
+
+
+@media screen and (min-width: 375px) and (max-width: 768px){
+    .raffles{
+        &__item{
+            margin-bottom: 48px;
+        }
+        &__title{
+            height: auto;
+        }
+        &__text{
+            margin: 16px 0;
+        }
+    }
+}
