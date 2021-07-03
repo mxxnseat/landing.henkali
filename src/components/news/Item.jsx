@@ -1,6 +1,6 @@
 import {Info} from "../reused/Info";
 
-export function NewsItem({title, img, date, subtitle}){
+export function NewsItem({title, img, date, views, id, subtitle}){
     return (
         <div className="col-12 d-flex flex-wrap news__item pl-md-0 px-0">
             <div className="news__image col-md-4 col-12 pl-md-0 px-0">
@@ -11,7 +11,7 @@ export function NewsItem({title, img, date, subtitle}){
                 <div className="text news__text">
                     {subtitle}
                 </div>
-                <Info date={date} />
+                <Info {...{views,date}} whoIs="news" id={id}  />
             </div>
         </div>
     )

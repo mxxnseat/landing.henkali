@@ -1,6 +1,7 @@
 import {Info} from "../reused/Info";
 
-export function RaffleItem({title, img, date, subtitle}){
+export function RaffleItem({title, img, date,views, subtitle, id}){
+    console.log(id);
     return (
         <div className="raffles__item col-md-4 col-12 px-0">
             <div className="raffles__image">
@@ -13,7 +14,7 @@ export function RaffleItem({title, img, date, subtitle}){
                 <div className="text raffles__text">
                     {subtitle}
                 </div>
-                <Info date={date} />
+                <Info {...{views,date}} whoIs="raffles" id={id} />
             </div>
         </div>
     );

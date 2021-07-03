@@ -1,36 +1,45 @@
 import { NewsItem } from "./Item";
+import { useEffect, useState } from "react";
+import axios from "axios";
 
 export function News() {
-    const news = [
+    const [news, setNews] = useState([
         {
-            title: "НОВЫЕ ХИНКАЛЬНЫЕ В ИЮНЕ",
-            subtitle: `Наша сеть неустанно растет! СКОРО состоится открытие новых хинкальных:
-            г. Севастополь, ТЦ "Sea Mall"
-            г. Симферополь, ул. Павленко, 7а
-            г. Коктебель, ул. Ленина, 144б
-            г. Анапа, ул. Горького, 7а`,
-            img: require("../../assets/img/news_stub.png").default,
-            date: '24.09.21'
+            "id": 1,
+            "title": "НОВЫЕ ХИНКАЛЬНЫЕ В ИЮНЕ",
+            "subtitle": "Наша сеть неустанно растет! СКОРО состоится открытие новых хинкальных:\nг. Севастополь, ТЦ \"Sea Mall\"\nг. Симферополь, ул. Павленко, 7а\nг. Коктебель, ул. Ленина, 144б\nг. Анапа, ул. Горького, 7а",
+            "img": require("../../assets/img/news_stub.png").default,
         },
         {
-            title: "УЖЕ В СЕТИ",
-            subtitle: `Этим летом сразу на три хинкальные в стране стало больше!\n
-            Мы успешно лепим и варим в городах:
-            г. Воронеж, ул. 20-летия Октября, 88
-            г. Кострома, ТРЦ «Коллаж»
-            г. Севастополь, Набережная Парка Победы, 27`,
-            img: require("../../assets/img/news_stub.png").default,
-            date: '24.09.21'
+            "id": 2,
+            "title": "НОВЫЕ ХИНКАЛЬНЫЕ В ИЮНЕ",
+            "subtitle": "Наша сеть неустанно растет! СКОРО состоится открытие новых хинкальных:\nг. Севастополь, ТЦ \"Sea Mall\"\nг. Симферополь, ул. Павленко, 7а\nг. Коктебель, ул. Ленина, 144б\nг. Анапа, ул. Горького, 7а",
+            "img": require("../../assets/img/news_stub.png").default,
         },
         {
-            title: "ЗАПУСКАЕМ ДЕТСКОЕ МЕНЮ",
-            subtitle: `Старик Хинкалыч рад позаботиться о всех, даже о самых маленьких генацвале. СКОРО во всех хинкальных нашей сети запустится ДЕТСКОЕ МЕНЮ!
-            Будем рады видеть вас всей семьей!`,
-            img: require("../../assets/img/news_stub.png").default,
-            date: '24.09.21'
-        }
-    ]
-    
+            "id": 3,
+            "title": "НОВЫЕ ХИНКАЛЬНЫЕ В ИЮНЕ",
+            "subtitle": "Наша сеть неустанно растет! СКОРО состоится открытие новых хинкальных:\nг. Севастополь, ТЦ \"Sea Mall\"\nг. Симферополь, ул. Павленко, 7а\nг. Коктебель, ул. Ленина, 144б\nг. Анапа, ул. Горького, 7а",
+            "img": require("../../assets/img/news_stub.png").default,
+        },
+    ]);
+    useEffect(() => {
+        axios.get("/news", {
+            headers: {
+                "Content-Type": "application/json"
+            }
+        })
+            .then(({data}) => {
+                const parseData = JSON.parse(data.data);
+                setNews(news.map((el, index) => {
+                    return {
+                        ...el,
+                        ...parseData[index]
+                    }
+                }));
+            })
+    }, []);
+
     return (
         <section className="news">
             <div className="container">
@@ -39,7 +48,7 @@ export function News() {
                 </h2>
                 <div className="new__list d-flex flex-wrap justify-content-center">
                     {
-                        news.map((item, index)=>{
+                        news.map((item, index) => {
                             return <NewsItem key={index} {...item} />
                         })
                     }
