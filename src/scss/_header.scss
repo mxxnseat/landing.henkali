@@ -1,0 +1,114 @@
+.header{
+    background-image: url("../assets/img/header_background.png");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    min-height: 72vh;
+    position: relative;
+    h1.heading{
+        text-align: left;
+    }
+    &:after{
+        content: "";
+        background-repeat: no-repeat;
+        background-image: url("../assets/img/starik.png");
+        position: absolute;
+        z-index: 1;
+        width: 406px;
+        height: 332px;
+        bottom: 0px;
+        left: 44%;
+        background-size: cover;
+        background-position: center;
+    }
+    .container{
+        background: none;
+        padding: 0;
+    }
+    &__text{
+        font-size: 24px;
+        line-height: 33.6px;
+        color: $grey3;
+        margin-top: 36px;
+    }
+    &__tabs{
+        min-width: 350px;
+    }
+    &__tab{
+        width: 100%;
+        padding: 15px 15px;
+        background-color: $white;
+        margin-top: 15px;
+        border-radius: 3em;
+        display: flex;
+        align-items: center;
+        
+        &:first-child{
+            background-color: $yellow;
+            margin-top: 0;
+        }
+    }
+    .tab__content{
+        color: $grey3;
+    }
+    .tab__header{
+        font-size: 20px;
+        line-height: 100%;
+    }
+    .tab__text{
+        font-size: 14px;
+        line-height: 100%;
+        margin-top: 8px;
+    }
+    .tab__image-wrap{
+        border-radius: 50%;
+        background-color: $red;
+        min-width: 60px;
+        min-height: 60px;
+        margin-right: 15px;
+        display: flex;
+        justify-content:center;
+        align-items: center;
+
+    }
+}
+
+
+
+@media screen and (max-width: 768px){
+    .header{
+        background: $white;
+        min-height: 100vh;
+        &:after{
+            left: 50%;
+            transform: translateX(-50%);
+            background-image: url("../assets/img/starik_rotate.png");
+            width: 340px;
+            height: 311px;
+        }
+        .container{
+            padding-top: 150px;
+            padding-bottom: 330px;
+        }
+        h1.heading{
+            font-size: 32px;
+            text-align: center;
+        }
+        &__text{
+            text-align: center;
+            font-size: 16px;
+            line-height: 140%;
+            margin-top: 8px;
+        }
+        &__tab:not(:first-child){
+            border: 1px solid $red;
+        }
+        .tab__image-wrap{
+            min-width: 48px;
+            min-height: 48px;
+        }
+        &__tabs{
+            margin-top: 30px;
+        }
+    }
+}

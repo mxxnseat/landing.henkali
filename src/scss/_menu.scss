@@ -1,35 +1,79 @@
 .menu{
-    padding: 20px 0;
-
+    padding: 35px 0;
+    padding-bottom: 0;
+    position: absolute;
+    top:69px;
+    width: 100%;
+    z-index: 999999;
+    left: 0;
+    &__burger{
+        cursor: pointer;
+    }
+    .container{
+        padding: 0 !important;
+        background-color: transparent;
+    }
     &__link{
-        color: $white;
+        color: $grey3;
+        transition: .15s ease-in;
+        cursor: pointer;
+
+        &:hover{
+            color: $red;
+        }
     }
 }
 
-.menu{
-    .logo{ margin: 104px 82.5px 131px 308.5px ;}
-    .pagination {display: flex;
-    margin: 133px 197.5px 151px 0;
-    
-        .text{font-family: 'Manrope';
-            font-style: normal;
-            font-weight: bold;
-            font-size: 16px;
+
+@media screen and (max-width: 768px){
+    .menu{
+        .container{
+            padding: 0 15px !important;
+        }
+    }
+    .mobile_menu{
+        position: fixed;
+        top: -100%;
+        left: 0;
+        width: 100%;
+        min-height: 100vh;
+        z-index: 9999999;
+        transition: .55s ease-in-out;
+        &.open{
+            top: 0;
+        }
+        .container-fluid{
+            background-color: $white;
+            min-height: 100vh;
+        }
+        &__header{
+            padding-top: 16px;
+        }
+        &__link{
+            color: $darkBlue;
+            font-size: 20px;
             line-height: 140%;
-            font-feature-settings: 'liga' off;         
-            color: #333333;          
-            flex: none;
-            order: 2;
-            flex-grow: 0;
-            margin: 0 30px 0 30px;
-         }
-    
+            cursor: pointer;
+            margin-bottom: 15px;
+        }
+        &__list{
+            margin-top: 30px;
+        }
+        &__social{
+            margin-top: 52px;
+            &__heading{
+                color: $darkBlue;
+                font-size: 18px;
+                line-height: 140%;
+            }
+            &__link{
+                color: $red;
+                font-size: 14px;
+                margin-top: 20px;
+                img{
+                    margin-right: 11px;
+                }
+            }
+        }
+    }
 }
-.communication{
-    .instagram{margin: 0 30px 0 30px;}
-}
-
-    
-}
-
-

@@ -11,7 +11,6 @@ export function Choice() {
         iconImageOffset: [-72, -86]
     };
 
-
     const [adressesList, setAdressesList] = useState(null);
     const [selectedAdress, setSelectedAdress] = useState(null);
     const [bookAdress, setBookAdress] = useState({
@@ -51,50 +50,52 @@ export function Choice() {
     })
 
     return (
-        <section className="choice">
-            <div className="container">
-                <h2 className="heading">
-                    Выберите <span className="text-red">хинкальную</span>
-                </h2>
-                <div className="d-flex flex-wrap mt-4 justify-content-md-around justify-content-between">
-                    <Select
-                        adressesList={adressesList}
-                        icon={require("../../assets/icons/mark.svg").default}
-                        signature="Город"
-                        selected={bookAdress.city !== null && bookAdress.city}
-                        selectText={bookAdress.city !== null ? bookAdress.city : 'Выберите город'}
-                        setAdress={(value) => {
-                            setSelectedAdress(value)
-                            selectHanlder({ name: 'city', value: value.city })
-                        }}
-                    />
+        <>
+            <section className="choice">
+                <div className="container">
+                    <h2 className="heading">
+                        Выберите <span className="text-red">хинкальную</span>
+                    </h2>
+                    <div className="d-flex flex-wrap mt-4 justify-content-md-around justify-content-between">
+                        <Select
+                            adressesList={adressesList}
+                            icon={require("../../assets/icons/mark.svg").default}
+                            signature="Город"
+                            selected={bookAdress.city !== null && bookAdress.city}
+                            selectText={bookAdress.city !== null ? bookAdress.city : 'Выберите город'}
+                            setAdress={(value) => {
+                                setSelectedAdress(value)
+                                selectHanlder({ name: 'city', value: value.city })
+                            }}
+                        />
 
 
-                    <Select
-                        signature="Адрес"
-                        selectText={
-                            bookAdress.adress !== null ? bookAdress.adress.street : 'Выберите город'
-                        }
-                        selected={bookAdress.adress !== null && true}
-                        adressesList={selectedAdress?.adresses}
-                        setAdress={(value) => {
-                            selectHanlder({ name: 'adress', value })
-                        }}
-                    />
-                    <a href="//vk.com" rel="noreferrer" target="_blank" className={menuCN}>
-                        меню
-                    </a>
-                    <div className={bookingCN}>
-                        ЗАБРОНИРОВАТЬ СТОЛИК
+                        <Select
+                            signature="Адрес"
+                            selectText={
+                                bookAdress.adress !== null ? bookAdress.adress.street : 'Выберите город'
+                            }
+                            selected={bookAdress.adress !== null && true}
+                            adressesList={selectedAdress?.adresses}
+                            setAdress={(value) => {
+                                selectHanlder({ name: 'adress', value })
+                            }}
+                        />
+                        <a href={bookAdress.adress && bookAdress.city ? `/menu/${bookAdress.city}/${bookAdress.adress}` : 'javascript:void(0);'} rel="noreferrer" target="_blank" className={menuCN}>
+                            меню
+                        </a>
+                        <div className={bookingCN}>
+                            ЗАБРОНИРОВАТЬ СТОЛИК
+                        </div>
+
                     </div>
-
                 </div>
-            </div>
-            <YMaps>
-                <Map width="100%" height="540px" state={{ center: bookAdress.adress !== null ? bookAdress.adress.cord : [44.948237, 34.100327], zoom: 16, controls: {} }} >
-                    <Placemark geometry={bookAdress.adress?.cord} options={placemarkOptions} />
-                </Map>
-            </YMaps>
-        </section>
+                <YMaps>
+                    <Map width="100%" height="540px" state={{ center: bookAdress.adress !== null ? bookAdress.adress.cord : [44.948237, 34.100327], zoom: 16, controls: {} }} >
+                        <Placemark geometry={bookAdress.adress?.cord} options={placemarkOptions} />
+                    </Map>
+                </YMaps>
+            </section>
+        </>
     );
 }

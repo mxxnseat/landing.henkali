@@ -169,6 +169,28 @@
     }
 }
 
+.modal{
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 999999;
+    overflow: hidden;
+    display: flex;
+    outline: 0;
+    background-color: rgba(0,0,0, .2);
+    justify-content:center;
+    align-items: center;
+
+    &__wrap{
+        width: 100%;
+        max-width: 640px;
+        padding: 72px;
+        background-color: $white;
+        border-radius: 30px;
+    }
+}
 
 
 @media screen and (min-width: 375px) and (max-width: 768px){

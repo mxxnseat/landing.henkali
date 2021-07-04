@@ -7,12 +7,14 @@ import { Gallery } from "./components/gallery";
 import { Choice } from "./components/choice";
 import { WhatIs } from "./components/WhatIs";
 import { SlideShow } from "./components/slideShow";
+import { Header } from "./components/Header";
 import "./scss/index.scss";
 
 function App() {
   return (
     <>
       <Menu />
+      <Header />
       <SlideShow />
       <WhatIs />
       <Choice />

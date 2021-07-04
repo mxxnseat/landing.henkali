@@ -4,9 +4,9 @@ const express = require("express");
 const fs = require("fs");
 const app = express();
 const bodyParser = require('body-parser');
-const indexHTML = path.join(__dirname,"../build/index.html");
-const PORT = process.env.PORT || 5000;
-app.use(express.static(path.join(__dirname, '../build')));
+const indexHTML = path.join(__dirname,"./html/index.html");
+const PORT = process.env.PORT || 5222;
+app.use(express.static(path.join(__dirname, './html')));
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
@@ -53,7 +53,6 @@ app.get("/news", (req,res)=>{
         })
     }
 });
-
 app.get("/raffles", (req,res)=>{
     try{
         const fileJSON = fs.readFileSync(path.resolve(__dirname, `./jsons/raffles.json`),{encoding:'utf8', flag:'r'});
@@ -70,7 +69,21 @@ app.get("/raffles", (req,res)=>{
     }
 });
 
+app.get("/menu/:city/:adress", (req,res)=>{
+    const {city, adress} = req.params;
+    const pathWay = path.resolve(__dirname,`./menu/${city}/${adress}.png`);
+  
+    fs.readFile(pathWay, {encoding:'utf8', flag:'r'}, (err, data)=>{
+        if(err){
+            console.log(err);
+        }else{
+            res.sendFile(pathWay);
+        }
+    });
 
+
+    // res.sendFile(path.join(__dirname,"./menu/1.png"));
+})
 
 app.listen(PORT, err=>{
     if(err) return console.log(`Error: ${err}`);
